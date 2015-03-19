@@ -5,7 +5,7 @@ import os, subprocess, sys
 import string
 from collections import Counter
 
-#Define d, which is a list of all filenames
+#Define d, where d is a list of all filenames
 data_files_output = subprocess.check_output(["ls",sys.argv[1]])
 d = data_files_output.split()
 
@@ -22,6 +22,7 @@ def my_fun(i):
 map_result = map(my_fun,d)
 
 #Execute the reduce function
+#It takes map_result as an argument which is a list of Counter objects.
 reduce_result = reduce( (lambda x,y:x+y), map_result)
 
 #Retrieve the items of the reduce result and sort alphabetically
