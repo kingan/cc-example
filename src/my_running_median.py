@@ -1,16 +1,17 @@
 from heapq import heappush, heappop
 import subprocess
 import string
+import sys
 
 #Create a sorted list of file names.
-word_files_output = subprocess.check_output(["ls","/home/aking/p/alpha"])
+word_files_output = subprocess.check_output(["ls",sys.argv[1]])
 word_files_list = word_files_output.split()
 word_files_list.sort()
 
 
 #Define a function to return the number of words on each line
 def my_fun(i):
-    input = "/home/aking/p/alpha/" + i
+    input = sys.argv[1] + i
     f = open(input,'r')
     out = f.read().translate(string.maketrans("",""), string.punctuation)
     out = out.split("\n")
@@ -43,7 +44,6 @@ a = [float(item) for item in streaming_median(numbers)]
 b = map((lambda x:str(x)+"\n"),a)
 b = reduce((lambda x,y: x+y),b)
 
-out = open('/home/aking/p/med_result.txt', 'w')
-#out = open(sys.argv[2], 'w')
+out = open(sys.argv[2], 'w')
 out.write(b)
 out.close()
