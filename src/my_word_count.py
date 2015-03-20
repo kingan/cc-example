@@ -12,7 +12,7 @@ d = data_files_output.split()
 #Define the map function.
 #It will read in a file, remove punctuation, convert to lowercase, tokenize and count each word.
 def my_fun(i):
-    input = sys.argv[1] + "/" + i
+    input = sys.argv[1] + i
     f = open(input,'r')
     out = f.read().translate(string.maketrans("",""), string.punctuation)
     wordcount = Counter(word_tokenize(out.lower()))
