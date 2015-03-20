@@ -18,31 +18,32 @@ def my_fun(i):
     wordcount = Counter(word_tokenize(out.lower()))
     return wordcount
 
-#Execute the map function for all items in d
-map_result = map(my_fun,d)
+try:
+    #Execute the map function for all items in d
+    map_result = map(my_fun,d)
 
-#Execute the reduce function
-#It takes map_result as an argument which is a list of Counter objects.
-reduce_result = reduce( (lambda x,y:x+y), map_result)
+    #Execute the reduce function
+    #It takes map_result as an argument which is a list of Counter objects.
+    reduce_result = reduce( (lambda x,y:x+y), map_result)
 
-#Retrieve the items of the reduce result and sort alphabetically
-final_list = reduce_result.items()
-final_list.sort()
+    #Retrieve the items of the reduce result and sort alphabetically
+    final_list = reduce_result.items()
+    final_list.sort()
 
-#Format the final_list
-#Ensure a consistent display by adding two tabs between word and count if the length of a word is seven characters or less
-output = ''
-for item in final_list:
-    if(len(item[0]) <= 7):
-        output += item[0] + "\t\t" + str(item[1])
-    else:
-        output += item[0] + "\t" + str(item[1])
-    output += "\n"
+    #Format the final_list
+    #Ensure a consistent display by adding two tabs between word and count if the length of a word is seven characters or less
+    output = ''
+    for item in final_list:
+        if(len(item[0]) <= 7):
+            output += item[0] + "\t\t" + str(item[1])
+        else:
+            output += item[0] + "\t" + str(item[1])
+        output += "\n"
 
-#Output to the specified file
-out = open(sys.argv[2], 'w')
-out.write(output)
-out.close()
+    #Output to the specified file
+    out = open(sys.argv[2], 'w')
+    out.write(output)
+    out.close()
 
-
-
+except:
+    print "Could not execute function"
