@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # first I'll load all my dependencies
-python3.4 -m pip install nltk
+python -m pip install nltk
 
 # next I'll make sure that all my programs (written in Python in this example) have the proper permissions
 chmod a+x ./src/my_word_count.py
